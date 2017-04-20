@@ -13,6 +13,9 @@ module.exports = class Consumer {
     this._broadcast = options.broadcast
     this._kafkaTopics = combine(this._topics, this._types, (topic, type) => `${topic.name}-${type.name}`)
 
+    console.log('Print Topics')
+    console.log(this._kafkaTopics)
+
     // Create a separate consumer for each topic since each topic needs a specific offset
     this._consumers = this._kafkaTopics.map((clientId) => {
       const defaultOptions = { idleTimeout: 100 }
