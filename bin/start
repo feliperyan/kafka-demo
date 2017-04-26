@@ -11,10 +11,11 @@ function cleanup {
 trap cleanup SIGINT SIGTERM
 
 if [ "${NODE_ENV}" = "development" ]; then
-  export KAFKA_URL="$(heroku config:get KAFKA_URL -a twitter-ingest)"
-  export KAFKA_CLIENT_CERT="$(heroku config:get KAFKA_CLIENT_CERT -a twitter-ingest)"
-  export KAFKA_CLIENT_CERT_KEY="$(heroku config:get KAFKA_CLIENT_CERT_KEY -a twitter-ingest)"
-  export TWITTER_TRACK_TERMS="$(heroku config:get TWITTER_TRACK_TERMS -a twitter-ingest)"
+  echo "dev"
+  export KAFKA_URL="$(heroku config:get KAFKA_URL -a new-airport-app)"
+  export KAFKA_CLIENT_CERT="$(heroku config:get KAFKA_CLIENT_CERT -a new-airport-app)"
+  export KAFKA_CLIENT_CERT_KEY="$(heroku config:get KAFKA_CLIENT_CERT_KEY -a new-airport-app)"
+  export TWITTER_TRACK_TERMS="$(heroku config:get TWITTER_TRACK_TERMS -a new-airport-app)"
 fi
 
 if [[ -z "${KAFKA_CLIENT_CERT}" ]]; then
